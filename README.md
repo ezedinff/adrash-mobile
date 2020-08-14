@@ -1,2 +1,2 @@
-# adrash-mobile
+# Adrash
 mobile application for adrash project
