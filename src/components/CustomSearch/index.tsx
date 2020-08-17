@@ -21,7 +21,7 @@ const CustomSearch: React.FC = () => {
                 </IonSelect>
                 <IonButton
                  onClick={() => filter.current.click()}
-                 color={"light"} size={"default"}
+                size={"default"}
                 className={"filter-button"}>
                             <IonIcon  icon={filterOutline}/>
                         </IonButton>
