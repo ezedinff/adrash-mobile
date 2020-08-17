@@ -20,19 +20,13 @@ const CustomSearch: React.FC = () => {
                     <IonSelectOption value="Gov't Office">Gov't Offices</IonSelectOption>
                     <IonSelectOption value="Schools">Schools</IonSelectOption>
                 </IonSelect>
-                <IonGrid>
-                    <IonRow>
-                        <IonCol size={"12"}>
-                        <IonButton onClick={() => filter.current.click()} color={"light"} size={"default"} className={"filter-button"}>
+                <IonButton onClick={() => filter.current.click()} color={"light"} size={"default"} className={"filter-button"}>
                              <FilterIcon />
                         </IonButton>
                         <IonSearchbar
                     searchIcon={filterOutline}
                     value={searchText}
                     onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
-                        </IonCol>
-                    </IonRow>
-                </IonGrid>
             </div>
     )
 }
