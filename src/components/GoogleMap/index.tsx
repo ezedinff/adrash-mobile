@@ -27,7 +27,7 @@ const GoogleMap: React.FC<{position: {latitude: number; longitude: number}; goog
     );
 }
 
-const Loading = () => <div>Fancy loading container</div>;
+const Loading = () => <IonLoading isOpen={true}/>;
 const apiKey = process.env.REACT_APP_API_KEY || "YOUR_API_KEY";
 export default GoogleApiWrapper({
   apiKey: apiKey,

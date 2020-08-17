@@ -20,9 +20,7 @@ const Home: React.FC = () => {
   //console.log()
     return (
         <IonPage>
-          <IonHeader>
-            <CustomSearch />
-          </IonHeader>
+           <CustomSearch />
           <IonContent>
             {!!position ? <GoogleMap position={position}/> : null}
           </IonContent>

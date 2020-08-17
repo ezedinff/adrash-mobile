@@ -3,6 +3,12 @@ import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonRouterOutlet,
+  IonTab,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
+  IonIcon,
+  IonLabel,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -25,14 +31,35 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Home from './pages/Home';
+import Notification from './pages/Notification';
+import Setting from './pages/Setting';
+import {homeOutline, settingsOutline, notificationsOutline } from 'ionicons/icons';
 require('dotenv').config()
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-    <IonRouterOutlet>
-          <Route path="/home" component={Home} exact={true} />
-          <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
-    </IonRouterOutlet>
+      <IonTabs>
+        <IonRouterOutlet>
+            <Route path="/home" component={Home} exact={true} />
+            <Route path="/notifications" component={Notification} exact={true} />
+            <Route path="/settings" component={Setting} exact={true} />
+            <Route path="/" render={() => <Redirect to="/home" />} exact={true} />  
+       </IonRouterOutlet>
+       <IonTabBar slot={"bottom"}>
+            <IonTabButton tab="home" href="/home">
+                <IonIcon icon={homeOutline} />
+                <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="notifications" href="/notifications">
+                <IonIcon icon={notificationsOutline} />
+                <IonLabel>Notification</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="settings" href="/settings">
+                <IonIcon icon={settingsOutline} />
+                <IonLabel>Setting</IonLabel>
+            </IonTabButton>
+       </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );
