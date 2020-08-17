@@ -11,11 +11,11 @@ mobile application for adrash project
 # TODOS
 
 ## Frontend works
-[] design all possible pages/screens
-[] watch users location
-[] connect with APIs
+[ ] design all possible pages/screens
+[ ] watch users location
+[ ] connect with APIs
 
 ## Backend works
-[] design services and their boundaries
-[] design database
+[ ] design services and their boundaries
+[ ] design database
 
