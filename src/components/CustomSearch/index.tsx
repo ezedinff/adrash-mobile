@@ -1,5 +1,5 @@
 import React, { useState, useRef, MutableRefObject, useEffect } from 'react';
-import { IonSearchbar, IonSelect, IonSelectOption, IonIcon, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
+import { IonSearchbar, IonSelect, IonSelectOption, IonIcon, IonGrid, IonRow, IonCol, IonButton, IonItem, IonLabel } from '@ionic/react';
 import { filterOutline} from 'ionicons/icons';
 import './index.css';
 const CustomSearch: React.FC = () => {
@@ -13,12 +13,15 @@ const CustomSearch: React.FC = () => {
     }, [])
     return (
             <div>
-                <IonSelect ref={filter} style={{display: "none"}} value={filterValue} okText="Okay" cancelText="Dismiss" onIonChange={e => setFilterValue(e.detail.value)}>
+                <IonItem style={{display: "none"}} >
+                    <IonLabel>Filter By</IonLabel>
+                    <IonSelect ref={filter} value={filterValue} okText="Ok" cancelText="Cancel" onIonChange={e => setFilterValue(e.detail.value)}>
                     <IonSelectOption value="All">All</IonSelectOption>
                     <IonSelectOption value="Hotel">Hotels</IonSelectOption>
                     <IonSelectOption value="Gov't Office">Gov't Offices</IonSelectOption>
                     <IonSelectOption value="Schools">Schools</IonSelectOption>
                 </IonSelect>
+                </IonItem>
                 <IonButton
                  onClick={() => filter.current.click()}
                 size={"default"}
