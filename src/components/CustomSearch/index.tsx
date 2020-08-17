@@ -11,7 +11,6 @@ const CustomSearch: React.FC = () => {
         const searchButton = filter.current.getElementsByClassName('searchbar-search-icon');
         console.log(searchButton);
     }, [])
-    const FilterIcon = () => <IonIcon  icon={filterOutline}/>
     return (
             <div>
                 <IonSelect ref={filter} style={{display: "none"}} value={filterValue} okText="Okay" cancelText="Dismiss" onIonChange={e => setFilterValue(e.detail.value)}>
@@ -20,8 +19,11 @@ const CustomSearch: React.FC = () => {
                     <IonSelectOption value="Gov't Office">Gov't Offices</IonSelectOption>
                     <IonSelectOption value="Schools">Schools</IonSelectOption>
                 </IonSelect>
-                <IonButton onClick={() => filter.current.click()} color={"light"} size={"default"} className={"filter-button"}>
-                             <FilterIcon />
+                <IonButton
+                 onClick={() => filter.current.click()}
+                 color={"light"} size={"default"}
+                className={"filter-button"}>
+                            <IonIcon  icon={filterOutline}/>
                         </IonButton>
                         <IonSearchbar
                     searchIcon={filterOutline}
