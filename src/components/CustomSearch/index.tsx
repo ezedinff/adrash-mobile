@@ -1,12 +1,16 @@
-import React, { useState, useRef, MutableRefObject } from 'react';
-import { IonSearchbar, IonSelect, IonSelectOption, IonIcon } from '@ionic/react';
+import React, { useState, useRef, MutableRefObject, useEffect } from 'react';
+import { IonSearchbar, IonSelect, IonSelectOption, IonIcon, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
 import { filterOutline} from 'ionicons/icons';
+import './index.css';
 const CustomSearch: React.FC = () => {
     const [searchText, setSearchText] = useState('');
     const [filterValue, setFilterValue] = useState("All")
     const filter = useRef() as MutableRefObject<HTMLIonSelectElement>
-    // filters, hotel, government office, libraries
 
+    useEffect(() => {
+        const searchButton = filter.current.getElementsByClassName('searchbar-search-icon');
+        console.log(searchButton);
+    }, [])
     const FilterIcon = () => <IonIcon  icon={filterOutline}/>
     return (
             <div>
@@ -16,11 +20,19 @@ const CustomSearch: React.FC = () => {
                     <IonSelectOption value="Gov't Office">Gov't Offices</IonSelectOption>
                     <IonSelectOption value="Schools">Schools</IonSelectOption>
                 </IonSelect>
-                <IonSearchbar
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size={"12"}>
+                        <IonButton onClick={() => filter.current.click()} color={"light"} size={"default"} className={"filter-button"}>
+                             <FilterIcon />
+                        </IonButton>
+                        <IonSearchbar
                     searchIcon={filterOutline}
                     value={searchText}
-                    onIonFocus={(e) =>  filter.current.click()}
                     onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
             </div>
     )
 }
