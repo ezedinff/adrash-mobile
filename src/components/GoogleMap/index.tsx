@@ -1,36 +1,36 @@
-import React, { Component } from "react";
-import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
+import React, { Component, useState } from "react";
+import GoogleMapReact from 'google-map-react';
 import { IonLoading } from "@ionic/react";
+import CustomMarker from "../CustomMarker";
+const uuidv1 = require('uuid/v1');
 
 const mapStyles = {
   width: '100%',
   height: '100%'
 };
 
-const GoogleMap: React.FC<{position: {latitude: number; longitude: number}; google: any}> = ({position, google}) => {
-    const onMarkerClick = () => {console.log("clicked")}
+const GoogleMap: React.FC<{position: {lat: number; lng: number}; google: any, data: any}> = ({position, google, data}) => {
+    const onMarkerClick = (f: {}) => {console.log(f)}
     return (
-      <div>
-        <Map
-          google={google}
-          style={mapStyles}
-          initialCenter={{
-            lat: position.latitude,
-            lng: position.longitude
-          }}
-        >
-         <Marker
-          onClick={onMarkerClick}
-        />
-        </Map>
+      <div style={mapStyles}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY || "" }}
+        center={position}
+        defaultZoom={15}
+      >
+        {
+          data.features
+            .map((fixture: any) => (
+            <CustomMarker
+            lat={fixture.geometry.coordinates[1]}
+            lng={fixture.geometry.coordinates[0]}
+            key={uuidv1()}/>
+          ))
+        }
+      </GoogleMapReact>
       </div>
     );
 }
 
 const Loading = () => <IonLoading isOpen={true}/>;
-const apiKey = process.env.REACT_APP_API_KEY || "YOUR_API_KEY";
-export default GoogleApiWrapper({
-  apiKey: apiKey,
-  libraries: ['places', 'visualization'],
-  LoadingContainer: Loading
-})(GoogleMap);
+export default GoogleMap;

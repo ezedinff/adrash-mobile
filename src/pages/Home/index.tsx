@@ -3,26 +3,23 @@ import { IonPage, IonHeader, IonContent } from '@ionic/react';
 import CustomSearch from '../../components/CustomSearch';
 import CustomMap from '../../components/CustomMap';
 import GoogleMap from '../../components/GoogleMap';
+import { TAXIS } from '../../data/taxi';
 const Home: React.FC = () => {
-  const [position, setposition] = useState({latitude: 18, longitude: 38})
+  const [position, setposition] = useState({lat: 18, lng: 38})
   useEffect(() => {
     if(! ("geolocation" in navigator)) {
       console.log("Not supported")
     }
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position);
-      setposition({latitude: position.coords.latitude, longitude: position.coords.longitude});
+      setposition({lat: position.coords.latitude, lng: position.coords.longitude});
     })
-    // return () => {
-    //   cleanup
-    // }
   }, [])
-  //console.log()
     return (
         <IonPage>
            <CustomSearch />
           <IonContent>
-            {!!position ? <GoogleMap position={position}/> : null}
+            {!!position ? <GoogleMap position={position} data={TAXIS} google={""}/> : null}
           </IonContent>
         </IonPage>
       );
