@@ -6,6 +6,7 @@ const CustomSearch: React.FC = () => {
     const [searchText, setSearchText] = useState('');
     const [filterValue, setFilterValue] = useState("All")
     const filter = useRef() as MutableRefObject<HTMLIonSelectElement>
+    const searchBar = useRef() as MutableRefObject<HTMLIonSearchbarElement>
 
     useEffect(() => {
         const searchButton = filter.current.getElementsByClassName('searchbar-search-icon');
@@ -29,6 +30,7 @@ const CustomSearch: React.FC = () => {
                             <IonIcon  icon={filterOutline}/>
                         </IonButton>
                         <IonSearchbar
+                        ref={searchBar}
                     searchIcon={filterOutline}
                     value={searchText}
                     onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
