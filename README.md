@@ -1,8 +1,11 @@
 # Adrash
-mobile application for adrash project
+mobile application for adrash project         
 ![Image of Cars](/images/car.jpg)
 
-- clone the app
+The main objective of the project is to provide location guides in Addis
+Ababa city and also to provide taxi-stations and navigation paths to new comers and to tourists.
+
+- clone the repository
 - Go to your new project: cd ./adrash-mobile
 - Run ionic serve within the app directory to see your app in the browser
 - Run ionic capacitor add to add a native iOS or Android project using Capacitor
