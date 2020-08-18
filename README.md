@@ -1,5 +1,6 @@
 # Adrash
 mobile application for adrash project
+![Image of Cars](/images/car.jpg)
 
 - clone the app
 - Go to your new project: cd ./adrash-mobile
