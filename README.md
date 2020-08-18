@@ -1,6 +1,6 @@
 # Adrash
          
-![Image of Cars](/images/car.jpg)
+                       ![Image of Cars](/images/car.jpg)
 
 The main objective of the project is to provide location guides in Addis
 Ababa city and also to provide taxi-stations and navigation paths to new comers and to tourists.
