@@ -34,34 +34,37 @@ import Home from './pages/Home';
 import Notification from './pages/Notification';
 import Setting from './pages/Setting';
 import {homeOutline, settingsOutline, notificationsOutline } from 'ionicons/icons';
+import { SocketIOProvider } from './shared/io';
 require('dotenv').config()
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-            <Route path="/home" component={Home} exact={true} />
-            <Route path="/notifications" component={Notification} exact={true} />
-            <Route path="/settings" component={Setting} exact={true} />
-            <Route path="/" render={() => <Redirect to="/home" />} exact={true} />  
-       </IonRouterOutlet>
-       <IonTabBar slot={"bottom"}>
-            <IonTabButton tab="home" href="/home">
-                <IonIcon icon={homeOutline} />
-                <IonLabel>Home</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="notifications" href="/notifications">
-                <IonIcon icon={notificationsOutline} />
-                <IonLabel>Notification</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="settings" href="/settings">
-                <IonIcon icon={settingsOutline} />
-                <IonLabel>Setting</IonLabel>
-            </IonTabButton>
-       </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+  <SocketIOProvider url={process.env.REACT_APP_API_URL || ""}>
+      <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+              <Route path="/home" component={Home} exact={true} />
+              <Route path="/notifications" component={Notification} exact={true} />
+              <Route path="/settings" component={Setting} exact={true} />
+              <Route path="/" render={() => <Redirect to="/home" />} exact={true} />  
+        </IonRouterOutlet>
+        <IonTabBar slot={"bottom"}>
+              <IonTabButton tab="home" href="/home">
+                  <IonIcon icon={homeOutline} />
+                  <IonLabel>Home</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="notifications" href="/notifications">
+                  <IonIcon icon={notificationsOutline} />
+                  <IonLabel>Notification</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="settings" href="/settings">
+                  <IonIcon icon={settingsOutline} />
+                  <IonLabel>Setting</IonLabel>
+              </IonTabButton>
+        </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  </SocketIOProvider>
 );
 
 export default App;

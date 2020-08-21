@@ -19,6 +19,7 @@ const GoogleMap: React.FC<{position: {lat: number; lng: number}; google: any, da
       // use map and maps objects
         console.log({maps});
     };
+    let p = !!position ? position : {lat: 18, lng: 38};
     
     return (
       <div style={mapStyles}>
@@ -26,7 +27,7 @@ const GoogleMap: React.FC<{position: {lat: number; lng: number}; google: any, da
         style={mapStyles}
         resetBoundsOnResize
         bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY || "" }}
-        center={position}
+        center={p}
         defaultZoom={13}
         yesIWantToUseGoogleMapApiInternals={true}
         onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
@@ -45,8 +46,8 @@ const GoogleMap: React.FC<{position: {lat: number; lng: number}; google: any, da
           <CustomMarker
             icon={personCircleOutline}
             cn={"heart"}
-            lat={position.lat}
-            lng={position.lng}
+            lat={p.lat}
+            lng={p.lng}
             key={uuidv1()}/>
         
       </GoogleMapReact>
