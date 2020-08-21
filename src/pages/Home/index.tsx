@@ -21,17 +21,19 @@ const Home: React.FC = () => {
   }, [])
   console.log(p);
 
-    return !!p ? (
+    return (
         <IonPage>
            <CustomSearch />
           <IonContent>
             {
-            p &&
+            !!p ?
             // @ts-ignore
-            <GoogleMap position={p.position} data={TAXIS} google={""}/>}
+            <GoogleMap position={p.position} data={TAXIS} google={""}/>
+            : <IonLoading isOpen={true}/>
+          }
           </IonContent>
         </IonPage>
-      ) : <IonLoading isOpen={true}/>;
+      );
 }
 
 export default Home;
