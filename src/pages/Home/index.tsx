@@ -29,7 +29,7 @@ const Home: React.FC = () => {
             !!p ?
             // @ts-ignore
             <GoogleMap position={p.position} data={TAXIS} google={""}/>
-            : <IonLoading isOpen={true}/>
+            : null
           }
           </IonContent>
         </IonPage>
